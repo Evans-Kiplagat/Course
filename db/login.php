@@ -25,7 +25,7 @@
     <div class="container d-flex justify-content-between">
 
       <div id="logo">
-        <h1><a href="../index.html">COURS<span>ES</span></a></h1>
+        <h1><a href="../index.php">COURS<span>ES</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
      <!--     <a href="index.html"><img src="assets/img/logo.png" alt=""></a> -->
 
@@ -35,7 +35,7 @@
  <nav id="navbar" class="navbar">
         <ul>
           <h1><a href="../index.php">Home</a></h1>
-          <h1><a href="../register.php">Register</a></h1>
+          <h1><a href="register.php">Register</a></h1>
           <li><a class="nav-link scrollto active" href="../index.php">Home</a></li>
           <!-- <li><a class="nav-link scrollto" href="">Register</a></li> -->
 
@@ -87,7 +87,7 @@
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                  <input name="password" type="password" id="form1Example2" class="form-control" />
+                  <input name="password" type="password" id="form1Example2" class="form-control" required="fill first" />
                   <label class="form-label" for="form1Example2">Password</label>
                 </div>
 
@@ -111,21 +111,100 @@
 
                 <!-- Submit button -->
                 <button name="login" type="submit" class="btn btn-primary btn-block">login</button>
+
+                <?php
+          require 'connect.php';
+
+           if(isset($_POST["login"])) 
+           {
+
+              $email =$_POST['email'];
+              $password =$_POST['password'];
+
+                     //db select
+                     $sql ="SELECT * FROM students WHERE email=?";
+
+                        //bind
+                       //prepare stmt
+                         if ($stmt = mysqli_prepare($conn,$sql))
+     {
+              // bind
+              mysqli_stmt_bind_param($stmt,'s',$param_email);
+
+              $param_email=$email;
+              /*$param_password= $password;*/
+
+                    //execute the program
+                    mysqli_execute($stmt);
+
+                       $result = mysqli_stmt_get_result($stmt);
+             if ($result) 
+         {
+           $rows = mysqli_num_rows($result);
+           if ($rows>0) 
+           {
+             $record =mysqli_fetch_assoc($result);
+               //echo "logined succeessful".$record['firstname'];
+                  $dbpass=$record['password'];
+               $statu =password_verify($password,$dbpass);
+
+                if ($statu) {
+                  session_start();
+                  $_SESSION['name']=$record['firstname'];
+                  $_SESSION['id']=$record['id'];
+                  $_SESSION['role'] =$record['role'];
+
+                  echo "succeessful registered well".$record['firstname'];
+echo <<<_END
+<script>location.href="../"</script>
+_END;                
+
+                                }else
+                                {
+                                  echo "<span class='text-danger'>wrong username/password</span>";
+                                }
+             }
+               else
+                { 
+                  echo "<span class='text-danger'>wrong username/password</span>";
+                }
+      
+    }            else{
+                       echo "some error".mysql_error($result);
+                     }
+
+
+                   }
+
+
+
+    }
+    
+                  /*else{echo "<h2>fill the login first then login</h2>";}*/
+
+
+   ?>
+  
               </form>
+
             </div>
+
+
           </div>
+
         </div>
+
       </div>
+
 
     </div>
     <!-- Background image -->
+
+
   </header>
   <!--Main Navigation-->
-       <?php
-   require 'connect.php';
 
-  ?>
- 
+  
 
   
     <script type="text/javascript" src="../login/js/mdb.min.js"></script>

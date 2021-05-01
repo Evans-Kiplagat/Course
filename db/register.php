@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>login</title>
+    <title>Register</title>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
     <!-- Google Fonts Roboto -->
@@ -25,7 +25,7 @@
     <div class="container d-flex justify-content-between">
 
       <div id="logo">
-        <h1><a href="../index.html">COURS<span>ES</span></a></h1>
+        <h1><a href="../index.php">COURS<span>ES</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
      <!--     <a href="index.html"><img src="assets/img/logo.png" alt=""></a> -->
 
@@ -35,7 +35,7 @@
  <nav id="navbar" class="navbar">
         <ul>
           <h1><a href="../index.php ?>">Home</a></h1>
-          <h1><a href="../register.php">login</a></h1>
+          <h1><a href="login.php">login</a></h1>
           <li><a class="nav-link scrollto active" href="../index.php">Home</a></li>
           <!-- <li><a class="nav-link scrollto" href="">Register</a></li> -->
 
@@ -96,27 +96,20 @@
 
                 <!-- Password input -->
                 <div class="form-outline mb-4">
-                  <input  name="password" type="password" id="form1Example2" class="form-control" />
+                  <input  name="password" type="password" id="form1Example2" class="form-control" required="fill first" />
                   <label class="form-label" for="form1Example3">Password</label>
                 </div>
                 <!--  confirm Password input -->
-                <div class="form-outline mb-4">
+               <!--  <div class="form-outline mb-4">
                   <input name="con_password" type="password" id="form1Example2" class="form-control" />
                   <label class="form-label" for="form1Example3">confirm password</label>
-                </div>
+                </div> -->
 
               
                 <!-- Submit button -->
                 <button name ="register" type="submit" class="btn btn-primary btn-block">Register</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </header>
-       
-   <?php
+
+                <?php
 
    require 'connect.php';
 
@@ -128,6 +121,8 @@
     $password=$_POST["password"];
   /*  $con_password =$_POST["con_password"];
 */
+
+  $encryptedpass =password_hash($password, PASSWORD_DEFAULT);
     //save the above into the db
 
     $sql = "INSERT INTO students(firstname,lastname,email,password) VALUES(?,?,?,?)";
@@ -135,17 +130,21 @@
     //check if the above is correct
     if ($stmt =mysqli_prepare($conn,$sql)) {
       # bind the param
-      mysqli_stmt_bind_param($stmt,"sssd",$param_first,$param_last,$param_email,$param_password);
+      mysqli_stmt_bind_param($stmt,"ssss",$param_first,$param_last,$param_email,$param_password);
 
       $param_first=$firstName;
       $param_last=$lastName;
       $param_email=$email;
-      $param_password=$password;
+      $param_password=$encryptedpass;
 
       //execute into the db
       if(mysqli_stmt_execute($stmt)){
-        echo "Registered sucessful";
-        header("Location:login.php");
+
+        echo <<<_END
+<script>location.href="login.php"</script>
+_END;        
+        /*echo "Registered sucessful";*/
+       /* header("location:login.php");*/
       }else{
         echo "failed to register".mysqli_error($conn);
       }
@@ -161,6 +160,15 @@
 
    ?>
   
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </header>
+       
+   
   <!--Main Navigation-->
 
   

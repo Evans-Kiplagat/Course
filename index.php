@@ -32,6 +32,13 @@
 
 <body>
 
+  <?php
+  session_start();
+  ?>
+
+
+  
+
   <!-- ======= Top Bar ======= -->
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
@@ -53,7 +60,7 @@
     <div class="container d-flex justify-content-between">
 
       <div id="logo">
-        <h1><a href="index.html">COURS<span>ES</span></a></h1>
+        <h1><a href="index.php">COURS<span>ES</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt=""></a>-->
       </div>
@@ -62,6 +69,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <!-- <li><a class="nav-link scrollto " href="#"> <?php echo $_SESSION['name'];?> </a></li> -->
 
           <li class="dropdown"><a href="#"><span>Grades</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
@@ -69,51 +77,107 @@
                 <ul>
                   <li class="dropdown"><a href="#">Medicine<i class="bi bi-chevron-right"></i></a>
                     <ul>
-                  <li><a href="course selected/pageSelected.php">Pure medicine</a></li>
-                  <li><a href="#">Clinical medicine</a></li>
-                  <li><a href="#">Pharmacy</a></li>
-                  <li><a href="#">Nursing</a></li>
-                  <li><a href="#">Dentistry</a></li>
+                      <!-------------
+                  <li><a href="courseselected/pageSelected.php">Pure medicine</a></li>
+                  --------->
+                  <li><a href="courseselected/pageSelected.php?course=Pure medicine">Pure medicine</a></li>
+                
+  
+
+                
+                  <li><a href="courseselected/pageSelected.php?course=Clinical medicine">Clinical medicine</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Pharmacy">Pharmacy</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Nursing">Nursing</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Dentistry">Dentistry</a></li>
                 </ul>
                   </li>
                   <li class="dropdown"><a href="#">Engineering<i class="bi bi-chevron-right"></i></a> <ul>
-                  <li><a href="#">Electrical and electronic</a></li>
-                  <li><a href="#">Civil engineering</a></li>
-                  <li><a href="#">Computer engineering</a></li>
-                  <li><a href="#">Acturial science</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Electrical and electronic">Electrical and electronic</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Civil Engineering">Civil engineering</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Aeronautical">Aeronautical</a></li>
+                 
                   
                 </ul>
                   </li>
-                  <li><a href="#">Applied Physics</a></li>
+                  <!-- <li><a href="#">Applied Physics</a></li>
                   <li><a href="#">Sciences</a></li>
-                  <li><a href="#">Maths</a></li>
+                  <li><a href="#">Maths</a></li> -->
+                     <li class="dropdown"><a href="courseselected/pageSelected.php?course=Law">Law<i class="bi bi-chevron-right"></i></a> <ul>
+                  
+                  
+                </ul>
+                  </li>
+
                 </ul>
               </li>
+
               <li class="dropdown"><a href="#"><span>A-</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="#">Medicine</a></li>
-                  <li><a href="#">Engineering</a></li>
-                  <li><a href="#">Applied Physics</a></li>
-                  <li><a href="#">Sciences</a></li>
-                  <li><a href="#">Maths</a></li>
+                  <li class="dropdown"><a  href="#">Medicine<i class="bi bi-chevron-right"></i></a>
+                    <ul>
+                    <li><a href="courseselected/pageSelected.php?course=Clinical medicine">Clinical medicine</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Pharmacy">Pharmacy</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Nursing">Nursing</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Dentistry">Dentistry</a></li>
+                </ul>
+                  </li>
+                  <li class="dropdown"><a href="#">Engineering<i class="bi bi-chevron-right"></i></a> <ul>
+                  <li><a href="courseselected/pageSelected.php?course=Electrical and electronic">Electrical and electronic</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Civil engineering">Civil engineering</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Aeronautical">Aeronautical</a></li>
+                 
+                  
+                </ul>
+                  </li>
+                  <li class="dropdown"><a href="#">Applied physics<i class="bi bi-chevron-right"></i></a> <ul>
+                  <li><a href="courseselected/pageSelected.php?course=Pure physics">pure physics</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Civil physics">Civil physics</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Aeronautical">Aeronautical</a></li>
+                 
+                  
+                </ul>
+                  </li>
+                  <li class="dropdown"><a href="courseselected/pageSelected.php">Sciences<i class="bi bi-chevron-right"></i></a> <ul>
+                  <li><a href="courseselected/pageSelected.php?course=Biology">Biology</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Pure Mathimathics"> Pure Maths</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Physics">Physics</a></li>
+                 
+                  
+                </ul>
+                  </li>
+                 <!--  <li><a href="#">Maths</a></li> -->
                 </ul>
               </li>
                <li class="dropdown"><a href="#"><span>B+</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="#">Medicine</a></li>
+                  <li class="dropdown"><a href="#">Eco-stastis<i class="bi bi-chevron-right"></i></a> <ul>
+                  <li><a href="courseselected/pageSelected.php?course=Finance">finance</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Business">businnes</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Statics">Statics</a></li>
+                 
+                  
+                </ul>
+                  </li>
                   <li><a href="#">Engineering</a></li>
-                  <li><a href="#">Applied Physics</a></li>
-                  <li><a href="#">Sciences</a></li>
-                  <li><a href="#">Maths</a></li>
+                  <li><a href="#">Business and Economis</a></li>
+                  <li class="dropdown"><a href="#">IT<i class="bi bi-chevron-right"></i></a> <ul>
+                  <li><a href="courseselected/pageSelected.php?course=software Engineering">software engineering</a></li>
+                  
+                 
+                  
+                </ul>
+                  </li>
+                  <li><a href="courseselected/pageSelected.php?course=Acturial science">Acturial science</a></li>
                 </ul>
               </li>
                <li class="dropdown"><a href="#"><span>B</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="#">Medicine</a></li>
-                  <li><a href="#">Engineering</a></li>
-                  <li><a href="#">Applied Physics</a></li>
-                  <li><a href="#">Sciences</a></li>
-                  <li><a href="#">Maths</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Human Resource">Human Resource Management</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=education">education</a></li>
+                  
+                  <li><a href="courseselected/pageSelected.php?course=Finance">Finance</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Technology">Technology</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Mathimathics">Mathimathics</a></li>
                 </ul>
               </li>
                <li class="dropdown"><a href="#"><span>B-</span> <i class="bi bi-chevron-right"></i></a>
@@ -127,23 +191,46 @@
               </li>
                <li class="dropdown"><a href="#"><span>C+</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a href="#">Medicine</a></li>
-                  <li><a href="#">Engineering</a></li>
-                  <li><a href="#">Applied Physics</a></li>
-                  <li><a href="#">Sciences</a></li>
-                  <li><a href="#">Maths</a></li>
+                  <li class="dropdown"><a href="#">Mass communication<i class="bi bi-chevron-right"></i></a> <ul>
+                  <li><a href="courseselected/pageSelected.php?course=Journalism">Journalism</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Design">Design</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Camera design">Camera design</a></li>
+                 
+                  
+                </ul>
+                  </li>
+                  <li><a href="courseselected/pageSelected.php?course=Music">Music</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Applied Physics">Applied Physics</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Purchasing and Supplies">Purchasing and Supplies</a></li>
+                  <li><a href="courseselected/pageSelected.php?course=Tourisim">Tourisim Management</a></li>
                 </ul>
               </li>
             </ul>
           </li>
 
 
+      <?php
+  if (isset($_SESSION['name'])) {
+   echo '<li> <a class="nav-link scrollto " href="#">'.$_SESSION['name']; '</a></li>';
+   echo ' <li><a class="nav-link scrollto" href="db/logout.php">Logout</a></li>';
+ }
+    else{
+      // show login./register
+      echo '<li><a class="nav-link scrollto " href="#hero">Login</a></li>
+            <li><a class="nav-link scrollto "href="#hero">Register</a></li>';
 
+    }
+  
+  ?>
+
+          
+          
+         
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="#hero">Login</a></li>
-          <li><a class="nav-link scrollto" href="#hero">Register</a></li>
 
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          
+          <li><a class="nav-link scrollto" href="db/addCareer.php">AdminAdd</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -157,8 +244,15 @@
     <div class="hero-content" data-aos="fade-up">
       <h2>Making <span>your career</span><br>happen!</h2>
       <div>
-        <a href="db/login.php" class="btn-get-started scrollto">LOGIN</a>
-        <a href="db/register.php" class="btn-projects scrollto">REGISTER</a>
+        <?php
+        if (isset($_SESSION['name'])) {
+          # code...
+        }else{
+          echo '<a href="db/login.php" class="btn-get-started scrollto">LOGIN</a>
+        <a href="db/register.php" class="btn-projects scrollto">REGISTER</a>';
+        }
+        ?>
+        
       </div>
     </div>
 
@@ -274,7 +368,7 @@ KUCCPS cut-off points & revision of courses 2021/22. How to check KUCCPS course 
       <div class="container" data-aos="fade-up">
         <div class="section-header">
           <h2>Contact Us</h2>
-          <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
+        <!--   <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p -->
         </div>
 
         <div class="row contact-info">
